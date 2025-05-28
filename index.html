@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Lixo - Conscientização sobre Lixo Eletrônico</title>
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #81c784;
+            --accent-color: #ff8f00;
+            --light-color: #f1f8e9;
+            --dark-color: #1b5e20;
+            --text-color: #333;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('imgs/poluicao-agua-e-waste.jpeg') no-repeat center center;
+    background-size: cover;
+    color: var(--white);
+    padding: 5rem 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+}
+
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #ff6f00;
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark-color);
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card-content h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .stats {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .process-steps {
+            counter-reset: step-counter;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 2rem;
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .step::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            background-color: var(--accent-color);
+            color: var(--white);
+            font-weight: bold;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .step-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .map-container {
+            margin-top: 2rem;
+            height: 400px;
+            background-color: #eee;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--white);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            background-color: rgba(255,255,255,0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 0.7rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-recycle"></i>
+                <span> E-lixo</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#impacto">Impacto</a></li>
+                    <li><a href="#solucoes">Soluções</a></li>
+                    <li><a href="#pontos">Ponto de Coleta</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+    <div class="container">
+        <h1>Lixo Eletrônico: Um Desafio Moderno</h1>
+        <p>Descubra como descartar corretamente seus dispositivos eletrônicos e contribuir para um planeta mais limpo e sustentável.</p>
+        <a href="#solucoes" class="btn">Saiba Como Ajudar</a>
+    </div>
+</section>
+
+    <section id="sobre">
+        <div class="container">
+            <div class="section-title">
+                <h2>O Que é Lixo Eletrônico?</h2>
+            </div>
+            <div class="card-container">
+                <div class="card">
+                    <img src="imgs/images.jpg" alt="Lixo Eletrônico">
+                    <div class="card-content">
+                        <h3>Definição</h3>
+                        <p>Lixo eletrônico ou e-lixo são todos os dispositivos eletroeletrônicos descartados ou obsoletos, como computadores, celulares, tablets, TVs, geladeiras e outros equipamentos eletrônicos.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="imgs/571117b113bd9-lixo-eletronico.jpeg" alt="Tipos de Lixo Eletrônico">
+                    <div class="card-content">
+                        <h3>Classificação</h3>
+                        <p>O e-lixo é classificado em quatro categorias: equipamentos de informática e telecomunicações, equipamentos domésticos, equipamentos de consumo e componentes eletrônicos.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="imgs/pilha~.jpeg" alt="Perigos do Lixo Eletrônico">
+                    <div class="card-content">
+                        <h3>Composição</h3>
+                        <p>Os equipamentos contêm metais pesados como chumbo, cádmio e mercúrio, além de plásticos e outros materiais que podem ser reciclados ou que representam risco ao meio ambiente e para os seres vivos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats" id="impacto">
+        <div class="container">
+            <div class="section-title">
+                <h2>Impacto do Lixo Eletrônico</h2>
+            </div>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <h3>53.6</h3>
+                    <p>Milhões de toneladas geradas globalmente em 2019</p>
+                </div>
+                <div class="stat-item">
+                    <h3>20%</h3>
+                    <p>É reciclado formalmente</p>
+                </div>
+                <div class="stat-item">
+                    <h3>70%</h3>
+                    <p>Contém substâncias tóxicas que contaminam o solo e água</p>
+                </div>
+                <div class="stat-item">
+                    <h3>R$ 10bi</h3>
+                    <p>Em materiais recuperáveis são perdidos anualmente</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solucoes">
+        <div class="container">
+            <div class="section-title">
+                <h2>Soluções e Reciclagem</h2>
+            </div>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-content">
+                        <h3>Coleta Seletiva</h3>
+                        <p>Separe seus eletrônicos quebrados ou obsoletos dos demais resíduos. Muitas cidades possuem pontos de coleta específicos para e-lixo.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-content">
+                        <h3>Logística Reversa</h3>
+                        <p>Fabricantes são obrigados por lei a receberem seus produtos de volta após o uso. Procure por programas de devolução.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-content">
+                        <h3>Reutilização</h3>
+                        <p>Antes de descartar, considere doar ou reformar o equipamento. Muitas instituições aceitam eletrônicos usados em bom estado.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-content">
+                        <h3>Reciclagem Especializada</h3>
+                        <p>O e-lixo deve ser processado por empresas especializadas que separam os componentes e os encaminham para a reciclagem adequada.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pontos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ponto de Coleta</h2>
+            </div>
+            <p>Encontre o local mais próximo para descartar seu lixo eletrônico corretamente. Muitos varejistas de eletrônicos e prefeituras oferecem essa opção gratuitamente.</p>
+            <div class="map-container">
+                <!-- Aqui irá um mapa integrado com Google Maps ou similar -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.6258259597666!2d-53.31547132375425!3d-23.760718968948247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94f2d541f7f73e6f%3A0x6229cb1bd6928c4b!2sACIU%20Umuarama!5e0!3m2!1spt-BR!2sbr!4v1746580439901!5m2!1spt-BR!2sbr" 
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+    
+
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Sobre Nós</h3>
+                    <p>Somos estudantes de Sistemas de Informação da UNIPAR - Umuarama, desenvolvendo um projeto para conscientizar sobre o lixo eletrônico, promovendo soluções sustentáveis e a economia circular.
+
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#sobre">O que é e-lixo?</a></li>
+                        <li><a href="#impacto">Impacto ambiental</a></li>
+                        <li><a href="#solucoes">Como reciclar</a></li>
+                        <li><a href="#pontos">Ponto de coleta</a></li>
+                    </ul>
+                </div>
+                
+        </div>
+    </footer>
+</body>
+</html>
